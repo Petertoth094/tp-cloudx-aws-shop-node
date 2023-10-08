@@ -18,8 +18,8 @@ custom:
     webpackConfig: 'webpack.config.js'
     packager: 'npm'
     includeModules: true
-    autoswagger:
-      typefiles: ['./interfaces/product.types.ts', './interfaces/api.types.ts']
+  autoswagger:
+    typefiles: ['./interfaces/product.types.ts', './interfaces/api.types.ts']
 
 functions:
   getProductsList:
