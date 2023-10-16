@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2020",
-    "module": "es2020",
+    "target": "ESNext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
       "@interfaces/*": ["interfaces/*"],
       "@functions": ["functions/index.ts"],
       "@functions/*": ["functions/*"],
-      "@mocks/*": ["mocks/*"]
+      "@mocks/*": ["mocks/*"],
+      "@schema/*": ["schema/*"],
+      "@utils/*": ["utils/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,

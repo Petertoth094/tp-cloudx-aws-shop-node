@@ -1,44 +1,69 @@
-import {Product} from '@interfaces/product.types';
+import {v4} from 'uuid';
 
-export const mockProducts: Product[] = [
+// used for DynamoDBDocumentClient
+export const mockProducts = [
   {
-    id: '1001',
-    title: 'The Shawshank Redemption',
-    description:
-      'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-    price: 9.99,
-    count: 5,
+    id: v4(),
+    title: 'Product 1',
+    description: 'Description for Product 1',
+    price: 100,
   },
   {
-    id: '1002',
-    title: 'The Godfather',
-    description:
-      'The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.',
-    price: 12.99,
-    count: 7,
+    id: v4(),
+    title: 'Product 2',
+    description: 'Description for Product 2',
+    price: 200,
   },
   {
-    id: '1003',
-    title: 'Pulp Fiction',
-    description:
-      'The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.',
-    price: 11.99,
-    count: 3,
+    id: v4(),
+    title: 'Product 3',
+    description: 'Description for Product 3',
+    price: 300,
   },
   {
-    id: '1004',
-    title: 'The Dark Knight',
-    description:
-      'When the menace known as The Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.',
-    price: 14.99,
-    count: 6,
+    id: v4(),
+    title: 'Product 4',
+    description: 'Description for Product 4',
+    price: 400,
   },
   {
-    id: '1005',
-    title: 'Inception',
-    description:
-      'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
-    price: 10.99,
-    count: 4,
+    id: v4(),
+    title: 'Product 5',
+    description: 'Description for Product 5',
+    price: 500,
   },
 ];
+
+// used for DynamoDBClient v3
+// export const mockProducts = [
+//   {
+//     id: {S: v4()},
+//     title: {S: 'Product 1'},
+//     description: {S: 'Description for Product 1'},
+//     price: {N: '100'},
+//   },
+//   {
+//     id: {S: v4()},
+//     title: {S: 'Product 2'},
+//     description: {S: 'Description for Product 2'},
+//     price: {N: '200'},
+//   },
+//   {
+//     id: {S: v4()},
+//     title: {S: 'Product 3'},
+//     description: {S: 'Description for Product 3'},
+//     price: {N: '300'},
+//   },
+//   {
+//     id: {S: v4()},
+//     title: {S: 'Product 4'},
+//     description: {S: 'Description for Product 4'},
+//     price: {N: '400'},
+//   },
+//   {
+//     id: {S: v4()},
+//     title: {S: 'Product 5'},
+//     description: {S: 'Description for Product 5'},
+//     price: {N: '500'},
+//   },
+// ];
