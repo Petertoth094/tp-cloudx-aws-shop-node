@@ -15,6 +15,7 @@ export const StockSchema = z.object({
   count: z.number().int(),
 });
 
+// TODO fix this
 export const ProductsStocksSchema = z.object({
   TransactItems: z.array(
     z.object({
