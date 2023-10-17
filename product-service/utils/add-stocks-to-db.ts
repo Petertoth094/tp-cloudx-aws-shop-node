@@ -1,6 +1,10 @@
-const {BatchWriteCommand} = require('@aws-sdk/lib-dynamodb');
-const {mockStocks} = require('@mocks/stocks.mock');
-const {docDbClient} = require('database/getDbClient');
+import {BatchWriteCommand} from '@aws-sdk/lib-dynamodb';
+import {mockStocks} from '../mocks/stocks.mock';
+import {docDbClient} from '../database';
+import dotenv from 'dotenv';
+
+dotenv.config();
+const {STOCKS_TABLE = ''} = process.env;
 
 const addStockToDynamoDB = async () => {
   try {
@@ -12,7 +16,7 @@ const addStockToDynamoDB = async () => {
 
     const command = new BatchWriteCommand({
       RequestItems: {
-        ['AWS_CloudX_Stocks']: putRequests,
+        [STOCKS_TABLE]: putRequests,
       },
     });
 

@@ -3,7 +3,7 @@ import {StatusCodes} from 'http-status-codes';
 import {docDbClient} from 'database/getDbClient';
 
 import {ErrorResponse} from '@interfaces/api.types';
-import {BasicProduct, ProductList, Stock} from '@interfaces/product.types';
+import {Product, BasicProduct, Stock} from '@interfaces/product.types';
 import {ScanCommand} from '@aws-sdk/lib-dynamodb';
 import {BASIC_ERROR_MESSAGE} from 'constants/messages';
 
@@ -32,7 +32,7 @@ export const getProductsList: APIGatewayProxyHandler = async (
 
     console.debug(basicProducts, stocks);
 
-    const products: ProductList = basicProducts?.map((basicProduct) => ({
+    const products: Product[] = basicProducts?.map((basicProduct) => ({
       ...basicProduct,
       count:
         stocks?.find((stock) => stock.product_id === basicProduct.id)?.count ??

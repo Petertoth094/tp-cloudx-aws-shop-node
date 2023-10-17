@@ -1,33 +1,31 @@
-import {v4} from 'uuid';
-
 // used for DynamoDBDocumentClient
 export const mockProducts = [
   {
-    id: v4(),
+    id: '83304b34-a187-4deb-a315-19f0f3b2a786',
     title: 'Product 1',
     description: 'Description for Product 1',
     price: 100,
   },
   {
-    id: v4(),
+    id: 'c56175cf-5f7a-40e7-a948-bf3513114780',
     title: 'Product 2',
     description: 'Description for Product 2',
     price: 200,
   },
   {
-    id: v4(),
+    id: '7274da07-24d8-4e71-b4f4-9f7a92ef8143',
     title: 'Product 3',
     description: 'Description for Product 3',
     price: 300,
   },
   {
-    id: v4(),
+    id: '1c2ad1fd-5bfa-4671-8f83-3cd8d5da18dd',
     title: 'Product 4',
     description: 'Description for Product 4',
     price: 400,
   },
   {
-    id: v4(),
+    id: '374f84a6-e189-4758-a546-9eabcb431bec',
     title: 'Product 5',
     description: 'Description for Product 5',
     price: 500,

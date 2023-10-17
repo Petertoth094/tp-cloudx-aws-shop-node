@@ -14,7 +14,7 @@ export const createProduct: APIGatewayProxyHandler = async (
   try {
     console.log('Lambda function createProduct request', JSON.stringify(event));
 
-    const {PRODUCTS_TABLE, STOCKS_TABLE} = process.env;
+    const {PRODUCTS_TABLE = '', STOCKS_TABLE = ''} = process.env;
 
     const parsedBody = JSON.parse(event.body || '{}');
 
@@ -31,32 +31,34 @@ export const createProduct: APIGatewayProxyHandler = async (
       };
     }
 
-    const product: CreateProduct = validationResult.data;
+    const {count, description, price, title}: CreateProduct =
+      validationResult.data;
+
     const productId = v4();
 
-    const transactItems = [
-      {
-        Put: {
-          TableName: PRODUCTS_TABLE,
-          Item: marshall({
-            id: productId,
-            ...product,
-          }),
-        },
-      },
-      {
-        Put: {
-          TableName: STOCKS_TABLE,
-          Item: marshall({
-            product_id: productId,
-            count: 10,
-          }),
-        },
-      },
-    ];
-
     const command = new TransactWriteItemsCommand({
-      TransactItems: transactItems,
+      TransactItems: [
+        {
+          Put: {
+            TableName: PRODUCTS_TABLE,
+            Item: marshall({
+              id: productId,
+              description,
+              title,
+              price,
+            }),
+          },
+        },
+        {
+          Put: {
+            TableName: STOCKS_TABLE,
+            Item: marshall({
+              product_id: productId,
+              count,
+            }),
+          },
+        },
+      ],
     });
 
     await docDbClient.send(command);

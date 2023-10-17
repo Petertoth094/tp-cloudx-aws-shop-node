@@ -4,9 +4,12 @@ export const CreateProductSchema = z.object({
   title: z.string().min(1),
   description: z.string(),
   price: z.number().int(),
+  count: z.number().int(),
 });
 
-export const BasicProductSchema = CreateProductSchema.extend({
+export const BasicProductSchema = CreateProductSchema.omit({
+  count: true,
+}).extend({
   id: z.string(),
 });
 
@@ -16,19 +19,17 @@ export const StockSchema = z.object({
 });
 
 // TODO fix this
-export const ProductsStocksSchema = z.object({
-  TransactItems: z.array(
-    z.object({
-      Put: z.object({
-        TableName: z.string(),
-        Item: BasicProductSchema,
-      }),
+export const ProductsStocksSchema = z.array(
+  z.object({
+    Put: z.object({
+      TableName: z.string(),
+      Item: BasicProductSchema,
     }),
-    z.object({
-      Put: z.object({
-        TableName: z.string(),
-        Item: StockSchema,
-      }),
-    })
-  ),
-});
+  }),
+  z.object({
+    Put: z.object({
+      TableName: z.string(),
+      Item: StockSchema,
+    }),
+  })
+);
