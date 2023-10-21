@@ -2,7 +2,11 @@
 
 ## Endpoints
 
+---
+
 FE Repo: https://github.com/Petertoth094/tp-cloudx-aws-shop-fe
+
+---
 
 Get getProductList: https://tnqd798sj0.execute-api.eu-west-1.amazonaws.com/products
 
