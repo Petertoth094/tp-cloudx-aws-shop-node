@@ -32,6 +32,48 @@
             }
           }
         }
+      },
+      "post": {
+        "summary": "createProduct",
+        "description": "",
+        "operationId": "createProduct.post./products",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Body required in the request",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateProduct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "400": {
+            "description": "Product data is invalid",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          },
+          "500": {
+            "description": "Something went wrong",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
       }
     },
     "/products/{productId}": {
@@ -77,36 +119,19 @@
     }
   },
   "definitions": {
+    "CreateProduct": {
+      "title": "CreateProduct"
+    },
+    "BasicProduct": {
+      "title": "BasicProduct"
+    },
+    "Stock": {
+      "title": "Stock"
+    },
+    "ProductsStocks": {
+      "title": "ProductsStocks"
+    },
     "Product": {
-      "properties": {
-        "id": {
-          "title": "Product.id",
-          "type": "string"
-        },
-        "title": {
-          "title": "Product.title",
-          "type": "string"
-        },
-        "description": {
-          "title": "Product.description",
-          "type": "string"
-        },
-        "price": {
-          "title": "Product.price",
-          "type": "number"
-        },
-        "count": {
-          "title": "Product.count",
-          "type": "number"
-        }
-      },
-      "required": [
-        "id",
-        "title",
-        "description",
-        "price",
-        "count"
-      ],
       "additionalProperties": false,
       "title": "Product",
       "type": "object"
