@@ -1,5 +1,13 @@
 # cloud-development-aws-js-course node-app
 
+Additional (optional) tasks for task5:
+
+- +10 (for JS only) - async/await is used in lambda functions -Done
+  +10 (All languages) - importProductsFile lambda is covered by unit tests. (for JS only) aws-sdk-mock can be used to mock S3 methods - Not implemented
+  +10 (All languages) - At the end of the stream the lambda function should move the file from the uploaded folder into the parsed folder (move the file means that file should be copied into a new folder in the same bucket called parsed, and then deleted from uploaded folder) - Done
+
+---
+
 ## Endpoints
 
 ---
@@ -25,15 +33,5 @@ Swagger documentation: https://tnqd798sj0.execute-api.eu-west-1.amazonaws.com/sw
 ---
 
 Swagger schema: https://tnqd798sj0.execute-api.eu-west-1.amazonaws.com/swagger.json
-
----
-
-Additional (optional) tasks:
-
-- POST /products lambda functions returns error 400 status code if product data is invalid - Done
-- All lambdas return error 500 status code on any error (DB connection, any unhandled error in code) - Done
-- All lambdas do console.log for each incoming requests and their arguments - Done
-- Use RDS instance instead fo DynamoDB tables. Do not commit your environment variables in serverless.yml to github! - Not implemented
-- Transaction based creation of product (in case stock creation is failed then related to this stock product is not created and not ready to be used by the end user and vice versa) - Done
 
 ---
