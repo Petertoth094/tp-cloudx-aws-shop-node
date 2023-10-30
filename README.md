@@ -12,6 +12,7 @@ Additional (optional) tasks for task6:
 ---
 
 FE Repo: https://github.com/Petertoth094/tp-cloudx-aws-shop-fe
+FE Endpoint: https://dqma123izeloq.cloudfront.net
 
 ---
 
