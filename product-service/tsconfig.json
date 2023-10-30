@@ -11,7 +11,8 @@
       "@functions/*": ["functions/*"],
       "@mocks/*": ["mocks/*"],
       "@schema/*": ["schema/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@services/*": ["services/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true,

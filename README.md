@@ -1,10 +1,9 @@
 # cloud-development-aws-js-course node-app
 
-Additional (optional) tasks for task5:
+Additional (optional) tasks for task6:
 
-- +10 (for JS only) - async/await is used in lambda functions -Done
-  +10 (All languages) - importProductsFile lambda is covered by unit tests. (for JS only) aws-sdk-mock can be used to mock S3 methods - Not implemented
-  +10 (All languages) - At the end of the stream the lambda function should move the file from the uploaded folder into the parsed folder (move the file means that file should be copied into a new folder in the same bucket called parsed, and then deleted from uploaded folder) - Done
++15 (All languages) - catalogBatchProcess lambda is covered by unit tests - Not done
++15 (All languages) - set a Filter Policy for SNS createProductTopic in serverless.yml and create an additional email subscription to distribute messages to different emails depending on the filter for any product attribute - Done
 
 ---
 

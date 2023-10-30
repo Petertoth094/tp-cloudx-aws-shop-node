@@ -119,8 +119,8 @@
     }
   },
   "definitions": {
-    "CreateProduct": {
-      "title": "CreateProduct"
+    "CreateProductProps": {
+      "title": "CreateProductProps"
     },
     "BasicProduct": {
       "title": "BasicProduct"
