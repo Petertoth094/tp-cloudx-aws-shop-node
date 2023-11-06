@@ -1,7 +1,6 @@
 import {APIGatewayProxyHandler} from 'aws-lambda';
 import {APIGatewayProxyEvent} from 'aws-lambda/trigger/api-gateway-proxy';
 
-import {BasicProduct, Product, Stock} from '@interfaces/product.types';
 import {ErrorResponse} from '@interfaces/api.types';
 import {StatusCodes} from 'http-status-codes';
 import {
@@ -9,12 +8,12 @@ import {
   GET_PRODUCT_BY_ID_ERROR_MESSAGE,
   getMissingProductIdErrorMessage,
 } from 'constants/messages';
-import {GetCommand} from '@aws-sdk/lib-dynamodb';
-import {docDbClient} from 'database/getDbClient';
+import {ProductService} from '@services/product-service';
 
 export const getProductById: APIGatewayProxyHandler = async (
   event: APIGatewayProxyEvent
 ) => {
+  const productsService = new ProductService();
   try {
     console.log(
       'Lambda function getProductById request',
@@ -34,24 +33,9 @@ export const getProductById: APIGatewayProxyHandler = async (
       };
     }
 
-    const {PRODUCTS_TABLE, STOCKS_TABLE} = process.env;
+    const product = productsService.getProductById(productId);
 
-    const productQuery = new GetCommand({
-      TableName: PRODUCTS_TABLE,
-      Key: {id: productId},
-    });
-
-    const stockQuery = new GetCommand({
-      TableName: STOCKS_TABLE,
-      Key: {product_id: productId},
-    });
-
-    const [basicProduct, stock] = await Promise.all([
-      docDbClient.send(productQuery).then((res) => res.Item as BasicProduct),
-      docDbClient.send(stockQuery).then((res) => res.Item as Stock),
-    ]);
-
-    if (!basicProduct) {
+    if (!product) {
       const errorResPonse: ErrorResponse = {
         message: getMissingProductIdErrorMessage(productId),
       };
@@ -61,10 +45,6 @@ export const getProductById: APIGatewayProxyHandler = async (
         body: JSON.stringify(errorResPonse),
       };
     }
-
-    const product: Product = Object.assign(basicProduct, {
-      count: stock?.count ?? 0,
-    });
 
     return {
       statusCode: 200,
@@ -79,7 +59,7 @@ export const getProductById: APIGatewayProxyHandler = async (
 
     const errorResponse: ErrorResponse = {message};
     return {
-      statusCode: StatusCodes.BAD_REQUEST,
+      statusCode: StatusCodes.INTERNAL_SERVER_ERROR,
       body: JSON.stringify(errorResponse),
     };
   }
