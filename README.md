@@ -1,12 +1,5 @@
 # cloud-development-aws-js-course node-app
 
-Additional (optional) tasks for task6:
-
-+15 (All languages) - catalogBatchProcess lambda is covered by unit tests - Not done
-+15 (All languages) - set a Filter Policy for SNS createProductTopic in serverless.yml and create an additional email subscription to distribute messages to different emails depending on the filter for any product attribute - Done
-
----
-
 ## Endpoints
 
 ---
