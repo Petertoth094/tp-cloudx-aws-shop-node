@@ -3,7 +3,6 @@ import csvParser from 'csv-parser';
 import {APIGatewayProxyResult, S3Event, S3EventRecord} from 'aws-lambda';
 import {StatusCodes} from 'http-status-codes';
 import {errorResponse, successfulResponse} from '@utils/responses';
-import {MetadataBearer} from '@aws-sdk/types';
 
 const s3 = new S3({region: process.env.REGION});
 const sqs = new SQS({region: process.env.REGION});
